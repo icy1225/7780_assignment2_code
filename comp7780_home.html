@@ -5,7 +5,7 @@
 
     <!--    COMP 7780mAssignment2
 	Author: Kuang Ziyan
-	Date:  15/02/2025
+	Date:  22/02/2025
 -->
     <title>Assignment2-cycle1</title>
 
@@ -15,37 +15,115 @@
         margin-left: auto;
         margin-right: auto;
       }
+      /* 设置背景图 */
+      body {
+        background-image: url("pics/home_pics/welcome_small.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: rgba(255, 255, 255, 0.5);
+        background-blend-mode: lighten;
+      }
     </style>
   </head>
 
   <body>
     <header>
-      <img src="logo.png" class="center" width="300" height="100" />
-      <h1 style="background-color: #0052cc; color: #ffffff; text-align: center">
+      <!-- 标题 -->
+      <h1
+        style="
+          background-color: rgba(207, 96, 21, 0.6);
+          color: #ffffff;
+          text-align: center;
+        "
+      >
         COMP 7780 Special Topics in Knowledge and Information Management <br />
         Team no. 10, Team Name: HKBU team
       </h1>
-      <img src="cs_logo.png" width="300" height="200" class="center" />
     </header>
 
     <section>
+      <!-- 主体文本内容 -->
       <article>
-        <h3>GreenWorld! Online Shop</h3>
+        <h3 style="text-align: center">Tikdrink Online Shop</h3>
         <p>
-          Our goal is to promote "Green Environment" by re-cycling the items
-          that you no longer need or use and sell them to the public for a
-          discounted price.
+          Welcome to Tikdrink! The store provides all kinds of drinks and
+          beverages, we sincerely invite new and old customers to come to buy!
         </p>
-        <p>All sales Final - No refund or exchange.</p>
-        <p>Once we received your payment, we will contact you for delivery.</p>
+        <p>
+          We have a variety of drinks, including milk tea, coffee, juice, and
+          other drinks. We have a variety of flavors, including original, milk
+          tea, coffee, and other flavors. We have a variety of sizes, including
+          small, medium, and large. We have a variety of toppings, including
+          pearls, pudding, and other toppings. We have a variety of ice levels,
+          including regular ice, less ice, and no ice. We have a variety of
+          sugar levels, including regular sugar, less sugar, and no sugar. We
+          have a variety of temperatures, including hot, warm, and cold.
+        </p>
+        <ul>
+          <li>One bottle for refreshment!</li>
+          <li>Two bottles for eternal life!</li>
+          <li>Three bottles for immortality!</li>
+          <li>Our products are delicious!</li>
+        </ul>
+        <p>Opening carnival, all the second drink half price! Tikdrink store, waiting for you to taste!</p>
+        <div style="position: relative;">
+          <img src="pics/home_pics/share.jpg" alt="Like" style="position: absolute; top: -130px; right: 0; width: 300px; height: auto;" />
+        </div></div>
       </article>
-
-      <p><a href="comp7780_product.html">Ready to Order, Click here!</a></p>
+      <br />
+      <p>
+        <button onclick="location.href='comp7780_product.html'">Click</button>
+        Order anything you want, Click here!
+      </p>
     </section>
+    <hr />
 
     <footer>
-      <p><img src="enews1.jpg" alt="hkbu Logo" /></p>
-      <p>Contact me: hansyip@comp.hkbu.edu.hk</p>
+      <!-- 分工表格 -->
+      <div>
+        <h3>Team Members and Responsibilities</h3>
+        <table
+          border="1"
+          style="width: 100%; text-align: left; border-collapse: collapse"
+        >
+          <tr>
+            <th>Name</th>
+            <th>Student ID</th>
+            <th>Responsibility</th>
+          </tr>
+          <tr>
+            <td>Chen Haojia</td>
+            <td>24459836</td>
+            <td>Scrum Master</td>
+          </tr>
+          <tr>
+            <td>Hong Zengwei</td>
+            <td>24448060</td>
+            <td>Scrum Master</td>
+          </tr>
+          <tr>
+            <td>Kuang Ziyan</td>
+            <td>24413070</td>
+            <td>Developer</td>
+          </tr>
+          <tr>
+            <td>Hu Jiayi</td>
+            <td>24444111</td>
+            <td>Developer</td>
+          </tr>
+          <tr>
+            <td>Kuang Wentao</td>
+            <td>24436003</td>
+            <td>Developer</td>
+          </tr>
+          <tr>
+            <td>Lin Zhanren</td>
+            <td>24400831</td>
+            <td>Developer</td>
+          </tr>
+        </table>
+      </div>
     </footer>
   </body>
 </html>
