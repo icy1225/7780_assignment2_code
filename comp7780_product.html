@@ -20,101 +20,142 @@
 
   <body>
     <header>
-      <img src="logo.png" class="center" width="300" height="100" />
-      <h1 style="background-color: #0052cc; color: #ffffff; text-align: center">
+      <h1
+        style="
+          background-color: rgba(207, 96, 21, 0.6);
+          color: #ffffff;
+          text-align: center;
+        "
+      >
         COMP 7780 Special Topics in Knowledge and Information Management <br />
         Team no. 10, Team Name: HKBU team
       </h1>
-      <img src="cs_logo.png" width="300" height="200" class="center" />
+      <!-- 设置背景图 -->
+      <style>
+        body {
+          background-image: url("pics/product_pics/product_bg.jpg");
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-color: rgba(255, 255, 255, 0.5);
+          background-blend-mode: lighten;
+        }
+      </style>
     </header>
 
     <section>
       <article>
-        <h3>GreenWorld! Online Shop</h3>
+        <h3>Tikdrink Online Shop</h3>
         <p>
-          Our goal is to promote "Green Environment" by re-cycling the items
-          that you no longer need or use and sell them to the public for a
-          discounted price.
+          We have a variety of drinks, including milk tea, coffee, juice, and
+          other drinks. We have a variety of flavors, including original, milk
+          tea, coffee, and other flavors. We have a variety of sizes, including
+          small, medium, and large. We have a variety of toppings, including
+          pearls, pudding, and other toppings. We have a variety of ice levels,
+          including regular ice, less ice, and no ice. We have a variety of
+          sugar levels, including regular sugar, less sugar, and no sugar. We
+          have a variety of temperatures, including hot, warm, and cold.
         </p>
         <p>All sales Final - No refund or exchange.</p>
         <p>Once we received your payment, we will contact you for delivery.</p>
       </article>
 
       <h1>Products for sale!</h1>
-      <!-- 写一个轮播图代码,让三个图片大小统一 -->
+      <!-- 写一个轮播图代码,让5个图片循环播放 -->
       <div class="slideshow-container">
         <div class="mySlides fade">
-          <img src="pics/bear_chocolate.jpg" style="width:100%">
+          <img src="pics/product_pics/coffee.jpg" style="width:100%">
         </div>
-
         <div class="mySlides fade">
-          <img src="pics/cityu_flower.jpg" style="width:100%">
+          <img src="pics/product_pics/green_juice.jpg" style="width:100%">
         </div>
-
         <div class="mySlides fade">
-          <img src="enews1.jpg" style="width:100%">
+          <img src="pics/product_pics/juice.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+          <img src="pics/product_pics/lemon_Cocktail.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+          <img src="pics/product_pics/strawberry_milkshake.jpg" style="width:100%">
         </div>
       </div>
-
-      <br>
-
+      
+      <!-- 指示点 -->
       <div style="text-align:center">
-        <span class="dot"></span> 
-        <span class="dot"></span> 
-        <span class="dot"></span> 
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
       </div>
 
+    <!-- 轮播图功能实现代码（js） -->
       <script>
       let slideIndex = 0;
       showSlides();
 
       function showSlides() {
-        let i;
         let slides = document.getElementsByClassName("mySlides");
         let dots = document.getElementsByClassName("dot");
-        for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";  
-        }
-        slideIndex++;
-        if (slideIndex > slides.length) {slideIndex = 1}    
-        for (i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex-1].style.display = "block";  
-        dots[slideIndex-1].className += " active";
-        setTimeout(showSlides, 2000); // Change image every 2 seconds
+
+      // 隐藏所有图片
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
       }
+
+      // 更新索引
+      slideIndex++;
+      if (slideIndex > slides.length) {
+        slideIndex = 1;
+      }
+
+      // 显示当前图片
+      slides[slideIndex - 1].style.display = "block";
+
+      // 更新指示点状态
+      for (let i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      dots[slideIndex - 1].className += " active";
+
+      // 设置下一次轮播
+      setTimeout(showSlides, 2000); // 每2秒切换一次
+    }
+
+    // 点击指示点切换图片
+    function currentSlide(index) {
+      slideIndex = index - 1;
+      showSlides();
+    }
+
+    // 为指示点绑定点击事件
+    let dots = document.getElementsByClassName("dot");
+    for (let i = 0; i < dots.length; i++) {
+      dots[i].addEventListener("click", () => currentSlide(i + 1));
+    }
       </script>
+      <br />
 
       <style>
       .slideshow-container {
-        max-width: 1000px;
         position: relative;
+        max-width: 1000px;
         margin: auto;
       }
 
       .mySlides {
-        display: none;
+        display: none; /* 默认隐藏 */
+        transition: opacity 1s ease-in-out; /* 添加过渡效果 */
       }
 
-      .fade {
-        -webkit-animation-name: fade;
-        -webkit-animation-duration: 1.5s;
-        animation-name: fade;
-        animation-duration: 1.5s;
+      .mySlides img {
+        width: 100%;
       }
 
-      @-webkit-keyframes fade {
-        from {opacity: .4} 
-        to {opacity: 1}
-      }
-
-      @keyframes fade {
-        from {opacity: .4} 
-        to {opacity: 1}
-      }
-
+      /* 指示点样式 */
       .dot {
+        cursor: pointer;
         height: 15px;
         width: 15px;
         margin: 0 2px;
@@ -124,13 +165,17 @@
         transition: background-color 0.6s ease;
       }
 
-      .active {
+      .active, .dot:hover {
         background-color: #717171;
       }
       </style>
-      
 
-      <table border="2">
+      <br />
+      <!-- 产品表格 -->
+      <table
+        border="2"
+        style="width: 100%; text-align: left; border-collapse: collapse"
+      >
         <tr>
           <th>Product</th>
           <th>Unit Price</th>
@@ -139,27 +184,55 @@
 
         <tr>
           <td>Product 1</td>
-          <td>$98</td>
-          <td><img src="/pics/bear_chocolate.jpg" style="width: 20%;height: 20%;" alt="" /></td>
+          <td>$18</td>
+          <td>
+            <img
+              src="/pics/product_pics/green_juice.jpg"
+              style="width: 50%; height: 20%"
+              alt=""
+            />
+          </td>
         </tr>
 
         <tr>
           <td>Product 2</td>
-          <td>$798</td>
-          <td></td>
+          <td>$38</td>
+          <td>
+            <img
+              src="/pics/product_pics/lemon_Cocktail.jpg"
+              style="width: 50%; height: 20%"
+              alt=""
+            />
+          </td>
         </tr>
 
         <tr>
           <td>Product 3</td>
-          <td>$998</td>
-          <td><img src="pics/cityu_flower.jpg" style="width: 20%;height: 20%;" alt=""></td>
+          <td>$28</td>
+          <td>
+            <img
+              src="/pics/product_pics/strawberry_milkshake.jpg"
+              style="width: 50%; height: 20%"
+              alt=""
+            />
+          </td>
         </tr>
       </table>
+      <style>
+        table img {
+          width: 100px;
+          height: 100px;
+        }
+
+        table th,
+        table td {
+          width: 33%;
+        }
+      </style>
     </section>
 
     <footer>
-      <p><img src="enews1.jpg" alt="hkbu Logo" /></p>
-      <p>Contact me: hansyip@comp.hkbu.edu.hk</p>
+      <p>11111</p>
     </footer>
   </body>
 </html>
