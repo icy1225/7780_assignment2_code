@@ -5,7 +5,7 @@
 
     <!--    COMP 7780mAssignment2
 	Author: Kuang Ziyan
-	Date:  15/02/2025
+	Date:  23/02/2025
 -->
     <title>Assignment2-cycle1 product</title>
 
@@ -60,23 +60,23 @@
         <p>Once we received your payment, we will contact you for delivery.</p>
       </article>
 
-      <h1>Products for sale!</h1>
+      <h1>Hot Products!</h1>
       <!-- 写一个轮播图代码,让5个图片循环播放 -->
       <div class="slideshow-container">
         <div class="mySlides fade">
-          <img src="pics/product_pics/coffee.jpg" style="width:100%">
+          <img src="pics/product_pics/Milktea/coffee.jpg" style="width:100%">
         </div>
         <div class="mySlides fade">
-          <img src="pics/product_pics/green_juice.jpg" style="width:100%">
+          <img src="pics/product_pics/juice/green_juice.jpg" style="width:100%">
         </div>
         <div class="mySlides fade">
           <img src="pics/product_pics/juice.jpg" style="width:100%">
         </div>
         <div class="mySlides fade">
-          <img src="pics/product_pics/lemon_Cocktail.jpg" style="width:100%">
+          <img src="pics/product_pics/Alcoholic/lemon_Cocktail.jpg" style="width:100%">
         </div>
         <div class="mySlides fade">
-          <img src="pics/product_pics/strawberry_milkshake.jpg" style="width:100%">
+          <img src="pics/product_pics/Milktea/strawberry_milkshake.jpg" style="width:100%">
         </div>
       </div>
       
@@ -172,6 +172,9 @@
 
       <br />
       <!-- 产品表格 -->
+      <h1>Products for sale!</h1>
+      <!-- 奶茶类 -->
+      <h2>Milktea</h2>
       <table
         border="2"
         style="width: 100%; text-align: left; border-collapse: collapse"
@@ -180,14 +183,15 @@
           <th>Product</th>
           <th>Unit Price</th>
           <th>Remarks</th>
+          <th>Introduction</th>
         </tr>
 
         <tr>
-          <td>Product 1</td>
-          <td>$18</td>
+          <td>bubble milktea</td>
+          <td>$48</td>
           <td>
             <img
-              src="/pics/product_pics/green_juice.jpg"
+              src="/pics/product_pics/Milktea/Bubble_milktea.jpg"
               style="width: 50%; height: 20%"
               alt=""
             />
@@ -195,11 +199,11 @@
         </tr>
 
         <tr>
-          <td>Product 2</td>
+          <td>coffee</td>
           <td>$38</td>
           <td>
             <img
-              src="/pics/product_pics/lemon_Cocktail.jpg"
+              src="/pics/product_pics/Milktea/coffee.jpg"
               style="width: 50%; height: 20%"
               alt=""
             />
@@ -207,17 +211,118 @@
         </tr>
 
         <tr>
-          <td>Product 3</td>
+          <td>strawberry milkshake</td>
           <td>$28</td>
           <td>
             <img
-              src="/pics/product_pics/strawberry_milkshake.jpg"
+              src="/pics/product_pics/Milktea/strawberry_milkshake.jpg"
               style="width: 50%; height: 20%"
               alt=""
             />
           </td>
         </tr>
       </table>
+
+      <!-- 果汁类 -->
+      <h2>Juice</h2>
+      <table
+      border="2"
+      style="width: 100%; text-align: left; border-collapse: collapse"
+      >
+      <tr>
+        <th>Product</th>
+        <th>Unit Price</th>
+        <th>Remarks</th>
+        <th>Introduction</th>
+      </tr>
+
+      <tr>
+        <td>green juice</td>
+        <td>$18</td>
+        <td>
+          <img
+            src="/pics/product_pics/juice/green_juice.jpg"
+            style="width: 50%; height: 20%"
+            alt=""
+          />
+        </td>
+      </tr>
+
+      <tr>
+        <td>orange juice</td>
+        <td>$24</td>
+        <td>
+          <img
+            src="/pics/product_pics/juice/orange_juice.jpg"
+            style="width: 50%; height: 20%"
+            alt=""
+          />
+        </td>
+      </tr>
+
+      <tr>
+        <td>red juice</td>
+        <td>$26</td>
+        <td>
+          <img
+            src="/pics/product_pics/juice/red_juice.jpg"
+            style="width: 50%; height: 20%"
+            alt=""
+          />
+        </td>
+      </tr>
+    </table>
+
+    <!-- 酒精类 -->
+    <h2>Alcoholic Beverage</h2>
+    <table
+    border="2"
+    style="width: 100%; text-align: left; border-collapse: collapse"
+  >
+    <tr>
+      <th>Product</th>
+      <th>Unit Price</th>
+      <th>Remarks</th>
+      <th>Introduction</th>
+    </tr>
+
+    <tr>
+      <td>Cool</td>
+      <td>$58</td>
+      <td>
+        <img
+          src="/pics/product_pics/Alcoholic/Cool_Cocktail.jpg"
+          style="width: 50%; height: 20%"
+          alt=""
+        />
+      </td>
+    </tr>
+
+    <tr>
+      <td>lemon cocktail</td>
+      <td>$38</td>
+      <td>
+        <img
+          src="/pics/product_pics/Alcoholic/lemon_Cocktail.jpg"
+          style="width: 50%; height: 20%"
+          alt=""
+        />
+      </td>
+    </tr>
+    
+    <tr>
+      <td>Blood</td>
+      <td>$68</td>
+      <td>
+        <img
+          src="/pics/product_pics/Alcoholic/blood.jpg"
+          style="width: 50%; height: 20%"
+          alt=""
+        />
+      </td>
+    </tr>
+  </table>
+  
       <style>
         table img {
           width: 100px;
@@ -226,7 +331,7 @@
 
         table th,
         table td {
-          width: 33%;
+          width: 25%;
         }
       </style>
     </section>
