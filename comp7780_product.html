@@ -90,53 +90,7 @@
       </div>
       </div>
 
-    <!-- 轮播图功能实现代码（js） -->
-      <script>
-      let slideIndex = 0;
-      showSlides();
-
-      function showSlides() {
-        let slides = document.getElementsByClassName("mySlides");
-        let dots = document.getElementsByClassName("dot");
-
-      // 隐藏所有图片
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-
-      // 更新索引
-      slideIndex++;
-      if (slideIndex > slides.length) {
-        slideIndex = 1;
-      }
-
-      // 显示当前图片
-      slides[slideIndex - 1].style.display = "block";
-
-      // 更新指示点状态
-      for (let i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-      }
-      dots[slideIndex - 1].className += " active";
-
-      // 设置下一次轮播
-      setTimeout(showSlides, 2000); // 每2秒切换一次
-    }
-
-    // 点击指示点切换图片
-    function currentSlide(index) {
-      slideIndex = index - 1;
-      showSlides();
-    }
-
-    // 为指示点绑定点击事件
-    let dots = document.getElementsByClassName("dot");
-    for (let i = 0; i < dots.length; i++) {
-      dots[i].addEventListener("click", () => currentSlide(i + 1));
-    }
-      </script>
       <br />
-
       <style>
       .slideshow-container {
         position: relative;
@@ -169,229 +123,208 @@
         background-color: #717171;
       }
       </style>
+
       <!-- 产品表格 -->
       <h1 style="
       background-color: rgba(207, 96, 21, 0.6);
       color: #ffffff;
     ">Products for sale!</h1>
-      <!-- 奶茶类 -->
+
+    <!-- Tab links -->
+    <div class="tab">
+      <button class="tablinks" onclick="openCategory(event, 'Milktea')">Milktea</button>
+      <button class="tablinks" onclick="openCategory(event, 'Juice')">Juice</button>
+      <button class="tablinks" onclick="openCategory(event, 'Alcoholic')">Alcoholic Beverage</button>
+    </div>
+
+    <!-- Tab content -->
+    <div id="Milktea" class="tabcontent">
       <h2>Milktea</h2>
-      <table
-        border="2"
-      >
+      <table border="2" style="width: 100%; text-align: left; border-collapse: collapse">
         <tr>
           <th>Product</th>
           <th>Unit Price</th>
           <th>Remarks</th>
           <th>Introduction</th>
         </tr>
-
         <tr>
           <td>bubble milktea</td>
           <td>$48</td>
           <td>
-            <img
-              src="/pics/product_pics/Milktea/Bubble_milktea.jpg"
-              style="width: 100%; height: 50%"
-              alt=""
-            />
+            <img src="/pics/product_pics/Milktea/Bubble_milktea.jpg" style="width: 100%; height: 50%" alt="" />
           </td>
           <td>
             <p>
-              Bubble milk tea is a tea-based drink that originated in Taiwan in
-              the early 1980s. It most commonly contains tea accompanied by
-              chewy tapioca balls, also known as pearls or boba. It is a
-              refreshing drink that can be served hot or cold.
+              Bubble milk tea is a tea-based drink that originated in Taiwan in the early 1980s. It most commonly contains tea accompanied by chewy tapioca balls, also known as pearls or boba. It is a refreshing drink that can be served hot or cold.
             </p>
             <button type="button">buy it</button>
           </td>
         </tr>
-
         <tr>
           <td>coffee</td>
           <td>$38</td>
           <td>
-            <img
-              src="/pics/product_pics/Milktea/coffee.jpg"
-              style="width: 100%; height: 50%"
-              alt=""
-            />
+            <img src="/pics/product_pics/Milktea/coffee.jpg" style="width: 100%; height: 50%" alt="" />
           </td>
           <td>
             <p>
-              Coffee is a brewed drink prepared from roasted coffee beans, the
-              seeds of berries from certain Coffea species. The genus Coffea is
-              native to tropical Africa and Madagascar, the Comoros, Mauritius,
-              and Réunion in the Indian Ocean.
+              Coffee is a brewed drink prepared from roasted coffee beans, the seeds of berries from certain Coffea species. The genus Coffea is native to tropical Africa and Madagascar, the Comoros, Mauritius, and Réunion in the Indian Ocean.
             </p>
             <button type="button">buy it</button>
           </td>
         </tr>
-
         <tr>
           <td>strawberry milkshake</td>
           <td>$28</td>
           <td>
-            <img
-              src="/pics/product_pics/Milktea/strawberry_milkshake.jpg"
-              style="width: 100%; height: 50%"
-              alt=""
-            />
+            <img src="/pics/product_pics/Milktea/strawberry_milkshake.jpg" style="width: 100%; height: 50%" alt="" />
           </td>
           <td>
             <p>
-              A milkshake is a sweet, cold beverage that is usually made from
-              milk, ice cream, or iced milk, and flavorings or sweeteners such as
-              butterscotch, caramel sauce, chocolate syrup, or fruit syrup.
+              A milkshake is a sweet, cold beverage that is usually made from milk, ice cream, or iced milk, and flavorings or sweeteners such as butterscotch, caramel sauce, chocolate syrup, or fruit syrup.
             </p>
             <button type="button">buy it</button>
           </td>
         </tr>
       </table>
+    </div>
 
-      <!-- 果汁类 -->
+    <div id="Juice" class="tabcontent">
       <h2>Juice</h2>
-      <table
-      border="2"
-      style="width: 100%; text-align: left; border-collapse: collapse"
-      >
-      <tr>
-        <th>Product</th>
-        <th>Unit Price</th>
-        <th>Remarks</th>
-        <th>Introduction</th>
-      </tr>
+      <table border="2" style="width: 100%; text-align: left; border-collapse: collapse">
+        <tr>
+          <th>Product</th>
+          <th>Unit Price</th>
+          <th>Remarks</th>
+          <th>Introduction</th>
+        </tr>
+        <tr>
+          <td>green juice</td>
+          <td>$18</td>
+          <td>
+            <img src="/pics/product_pics/juice/green_juice.jpg" style="width: 100%; height: 80%" alt="" />
+          </td>
+          <td>
+            <p>
+              Green juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables, such as cucumber, green apple and so on.
+            </p>
+            <button type="button">buy it</button>
+          </td>
+        </tr>
+        <tr>
+          <td>orange juice</td>
+          <td>$24</td>
+          <td>
+            <img src="/pics/product_pics/juice/orange_juice.jpg" style="width: 100%; height: 80%" alt="" />
+          </td>
+          <td>
+            <p>
+              Orange juice is a liquid extract of the orange tree fruit, produced by squeezing or reaming oranges.
+            </p>
+            <button type="button">buy it</button>
+          </td>
+        </tr>
+        <tr>
+          <td>red juice</td>
+          <td>$26</td>
+          <td>
+            <img src="/pics/product_pics/juice/red_juice.jpg" style="width: 100%; height: 80%" alt="" />
+          </td>
+          <td>
+            <p>
+              Red juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables, such as strawberry, cherry and so on.
+            </p>
+            <button type="button">buy it</button>
+          </td>
+        </tr>
+      </table>
+    </div>
 
-      <tr>
-        <td>green juice</td>
-        <td>$18</td>
-        <td>
-          <img
-            src="/pics/product_pics/juice/green_juice.jpg"
-            style="width: 100%; height: 80%"
-            alt=""
-          />
-        </td>
-        <td>
-          <p>
-            Green juice is a drink made from the extraction or pressing of
-            the natural liquid contained in fruit and vegetables, such as cucumber,green apple and so on. 
-          </p>
-          <button type="button">buy it</button>
-        </td>
-      </tr>
+    <div id="Alcoholic" class="tabcontent">
+      <h2>Alcoholic Beverage</h2>
+      <table border="2" style="width: 100%; text-align: left; border-collapse: collapse">
+        <tr>
+          <th>Product</th>
+          <th>Unit Price</th>
+          <th>Remarks</th>
+          <th>Introduction</th>
+        </tr>
+        <tr>
+          <td>Cool</td>
+          <td>$58</td>
+          <td>
+            <img src="/pics/product_pics/Alcoholic/Cool_Cocktail.jpg" style="width: 100%; height: 80%" alt="" />
+          </td>
+          <td>
+            <p>
+              "Cool" is a cocktail made with gin, lemon juice, and sugar, and topped with soda water. It is a classic cocktail that is easy to make.
+            </p>
+            <button type="button">buy it</button>
+          </td>
+        </tr>
+        <tr>
+          <td>lemon cocktail</td>
+          <td>$38</td>
+          <td>
+            <img src="/pics/product_pics/Alcoholic/lemon_Cocktail.jpg" style="width: 100%; height: 80%" alt="" />
+          </td>
+          <td>
+            <p>
+              Lemon cocktail is a cocktail made with lemon juice, gin, and sugar, and topped with soda water. It is a refreshing drink that is perfect for a hot summer day.
+            </p>
+            <button type="button">buy it</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Blood</td>
+          <td>$68</td>
+          <td>
+            <img src="/pics/product_pics/Alcoholic/blood.jpg" style="width: 100%; height: 80%" alt="" />
+          </td>
+          <td>
+            <p>
+              "Blood" is a cocktail made with vodka, tomato juice, and spices. It is a classic cocktail that is perfect for brunch or a night out.
+            </p>
+            <button type="button">buy it</button>
+          </td>
+        </tr>
+      </table>
+    </div>
 
-      <tr>
-        <td>orange juice</td>
-        <td>$24</td>
-        <td>
-          <img
-            src="/pics/product_pics/juice/orange_juice.jpg"
-            style="width: 100%; height: 80%"
-            alt=""
-          />
-        </td>
-        <td>
-          <p>
-            Orange juice is a liquid extract of the orange tree fruit, produced by squeezing or reaming oranges. 
-          </p>
-          <button type="button">buy it</button>
-        </td>
-      </tr>
+    <style>
+      .tab {
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+      }
 
-      <tr>
-        <td>red juice</td>
-        <td>$26</td>
-        <td>
-          <img
-            src="/pics/product_pics/juice/red_juice.jpg"
-            style="width: 100%; height: 80%"
-            alt=""
-          />
-        </td>
-        <td>
-          <p>
-            Red juice is a drink made from the extraction or pressing of
-            the natural liquid contained in fruit and vegetables, such as strawberry, cherry and so on. 
-          </p>
-          <button type="button">buy it</button>
-        </td>
-      </tr>
-    </table>
+      .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+      }
 
-    <!-- 酒精类 -->
-    <h2>Alcoholic Beverage</h2>
-    <table
-    border="2"
-    style="width: 100%; text-align: left; border-collapse: collapse"
-  >
-    <tr>
-      <th>Product</th>
-      <th>Unit Price</th>
-      <th>Remarks</th>
-      <th>Introduction</th>
-    </tr>
+      .tab button:hover {
+        background-color: #ddd;
+      }
 
-    <tr>
-      <td>Cool</td>
-      <td>$58</td>
-      <td>
-        <img
-          src="/pics/product_pics/Alcoholic/Cool_Cocktail.jpg"
-          style="width: 100%; height: 80%"
-          alt=""
-        />
-      </td>
-      <td>
-        <p>
-          "Cool" is a cocktail made with gin, lemon juice, and sugar, and
-          topped with soda water. It is a classic cocktail that is easy to make.
-        </p>
-        <button type="button">buy it</button>
-      </td>
-    </tr>
+      .tab button.active {
+        background-color: #ccc;
+      }
 
-    <tr>
-      <td>lemon cocktail</td>
-      <td>$38</td>
-      <td>
-        <img
-          src="/pics/product_pics/Alcoholic/lemon_Cocktail.jpg"
-          style="width: 100%; height: 80%"
-          alt=""
-        />
-      </td>
-      <td>
-        <p>
-          Lemon cocktail is a cocktail made with lemon juice, gin, and sugar,
-          and topped with soda water. It is a refreshing drink that is perfect
-          for a hot summer day.
-        </p>
-        <button type="button">buy it</button>
-      </td>
-    </tr>
-    
-    <tr>
-      <td>Blood</td>
-      <td>$68</td>
-      <td>
-        <img
-          src="/pics/product_pics/Alcoholic/blood.jpg"
-          style="width: 100%; height: 80%"
-          alt=""
-        />
-      </td>
-      <td>
-        <p>
-          "Blood" is a cocktail made with vodka, tomato juice, and spices. It is
-          a classic cocktail that is perfect for brunch or a night out.
-        </p>
-        <button type="button">buy it</button>
-      </td>
-    </tr>
-  </table>
+      .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-top: none;
+      }
+    </style>
   
-      <style>
+    <style>
         table img {
           width: 100px;
           height: 100px;
@@ -401,11 +334,12 @@
         table td {
           width: 25%;
         }
-      </style>
-    </section>
+    </style>
+  </section> 
 
     <footer>
       <p>Designed by icy.</p>
     </footer>
+    <script src="js/main.js"></script>
   </body>
 </html>
