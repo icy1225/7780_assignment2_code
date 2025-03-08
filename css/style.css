@@ -43,28 +43,29 @@ body {
 .dot:hover {
   background-color: #717171;
 }
+
+/* tab样式 */
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
-  background-color: #f1f1f1;
+  background-color: rgba(195, 180, 170, 0.6);
 }
 
 .tab button {
-  background-color: inherit;
-  float: left;
+  background-color: rgba(207, 96, 21, 0.6);
+  color: white;
+  padding: 14px 20px;
   border: none;
-  outline: none;
   cursor: pointer;
-  padding: 14px 16px;
   transition: 0.3s;
 }
 
 .tab button:hover {
-  background-color: #ddd;
+  background-color: rgba(207, 96, 21, 0.8);
 }
 
 .tab button.active {
-  background-color: #ccc;
+  background-color: rgba(207, 96, 21, 1);
 }
 
 .tabcontent {
