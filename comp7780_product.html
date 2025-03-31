@@ -2,26 +2,130 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-
-    <!--    COMP 7780mAssignment2
-	Author: Kuang Ziyan
-	Date:  08/03/2025
--->
     <title>Assignment2-cycle1 product</title>
     <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* 轮播图样式 */
+      .slideshow-container {
+        position: relative;
+        max-width: 1000px;
+        margin: auto;
+      }
+      .mySlides {
+        display: none;
+      }
+      .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+      }
+      .active, .dot:hover {
+        background-color: #717171;
+      }
+      
+      /* 标签页样式 */
+      .tab {
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+      }
+      .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+      }
+      .tab button:hover {
+        background-color: #ddd;
+      }
+      .tab button.active {
+        background-color: #ccc;
+      }
+      .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-top: none;
+      }
+      
+      /* 表格样式 */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      table, th, td {
+        border: 1px solid #ddd;
+      }
+      th, td {
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      
+      /* 按钮样式 */
+      .add-to-cart {
+        background-color: #4CAF50;
+        color: white;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .add-to-cart:hover {
+        background-color: #45a049;
+      }
+      .paypal-button {
+        background-color: #0052cc;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 20px 0;
+      }
+      
+      /* 购物车摘要样式 */
+      #cart-summary {
+        margin: 20px 0;
+        padding: 15px;
+        border: 1px solid #ddd;
+        background-color: #f9f9f9;
+        display: none;
+      }
+      #cart-items p {
+        margin: 5px 0;
+      }
+      #cart-total {
+        font-weight: bold;
+        font-size: 1.1em;
+      }
+      
+      /* 客户选择下拉框样式 */
+      #customerSelect {
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        margin-left: 10px;
+      }
+    </style>
   </head>
 
   <body>
     <header>
-      <h1
-        style="
-          background-color: rgba(207, 96, 21, 0.6);
-          color: #ffffff;
-          text-align: center;
-        "
-      >
+      <h1 style="background-color: rgba(207, 96, 21, 0.6); color: #ffffff; text-align: center;">
         COMP 7780 Special Topics in Knowledge and Information Management <br />
-        Team no. 10, Team Name:You Draw I Guess
+        Team no. 10, Team Name: You Draw I Guess
       </h1>
     </header>
 
@@ -39,11 +143,11 @@
           have a variety of temperatures, including hot, warm, and cold.
         </p>
         <p>All sales Final - No refund or exchange.</p>
-        <p>Enjoy your order!</p>
+        <p>Enjoy what your order!</p>
       </article>
 
       <h1>Hot Products!</h1>
-      <!-- 写一个轮播图代码,让5个图片循环播放 -->
+      <!-- 轮播图 -->
       <div class="slideshow-container">
         <div class="mySlides fade">
           <img src="pics/product_pics/Milktea/coffee.jpg" style="width:100%">
@@ -62,7 +166,7 @@
         </div>
       </div>
       
-      <!-- 指示点 -->
+      <!-- 轮播图指示点 -->
       <div style="text-align:center">
         <span class="dot"></span>
         <span class="dot"></span>
@@ -70,300 +174,541 @@
         <span class="dot"></span>
         <span class="dot"></span>
       </div>
-    </div>
 
-    <br />
+      <h1 style="background-color: rgba(207, 96, 21, 0.6); color: #ffffff;">Products for sale!</h1>
 
-      <!-- 产品表格 -->
-    <h1 style="
-      background-color: rgba(207, 96, 21, 0.6);
-      color: #ffffff;
-    ">Products for sale!</h1>
+      <!-- 标签页导航 -->
+      <div class="tab">
+        <button class="tablinks" onclick="openCategory(event, 'Milktea')">Milktea</button>
+        <button class="tablinks" onclick="openCategory(event, 'Juice')">Juice</button>
+        <button class="tablinks" onclick="openCategory(event, 'Alcoholic')">Alcoholic Beverage</button>
+        <label for="customerSelect" style="margin-right: 10px;">Choose a customer:</label>
+        <select id="customerSelect">
+          <option value="">Select Customer</option>
+          <option value="customer1">Customer 1</option>
+          <option value="customer2">Customer 2</option>
+          <option value="customer3">Customer 3</option>
+          <option value="customer4">Customer 4</option>
+          <option value="customer5">Customer 5</option>
+        </select>
+      </div>
 
-    <!-- Tab links -->
-    <div class="tab">
-      <button class="tablinks" onclick="openCategory(event, 'Milktea')">Milktea</button>
-      <button class="tablinks" onclick="openCategory(event, 'Juice')">Juice</button>
-      <button class="tablinks" onclick="openCategory(event, 'Alcoholic')">Alcoholic Beverage</button>
-      <!-- 给tab栏的最右边加个下拉选择客户的下拉表 -->
-      <select style="float: right;">
-        <option value="customer1">Customer 1</option>
-        <option value="customer2">Customer 2</option>
-        <option value="customer3">Customer 3</option>
-        <option value="customer4">Customer 4</option>
-        <option value="customer5">Customer 5</option>
-      </select>
-    </div>
+      <!-- 奶茶产品 -->
+      <div id="Milktea" class="tabcontent">
+        <h2>Milktea</h2>
+        <table>
+          <tr>
+            <th>Product</th>
+            <th>Unit Price</th>
+            <th>Picture</th>
+            <th>Introduction</th>
+            <th>Quantity</th>
+            <th>Action</th>
+          </tr>
+          <tr>
+            <td>bubble milktea</td>
+            <td>
+              <p>$48</p>
+              <input type="hidden" class="product-price" value="48">
+            </td>
+            <td>
+              <img src="pics/product_pics/Milktea/Bubble_milktea.jpg" style="width: 100%; height: 150px" alt="Bubble Milktea" />
+            </td>
+            <td>
+              <p>
+                Bubble milk tea is a tea-based drink that originated in Taiwan in the early 1980s. It most commonly contains tea accompanied by chewy tapioca balls, also known as pearls or boba. It is a refreshing drink that can be served hot or cold.
+              </p>
+            </td>
+            <td>
+              <select class="product-qty">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </td>
+            <td>
+              <button type="button" class="add-to-cart" data-product="bubble milktea">Add to Cart</button>
+            </td>
+          </tr>
+          <tr>
+            <td>coffee</td>
+            <td>
+              <p>$38</p>
+              <input type="hidden" class="product-price" value="38">
+            </td>
+            <td>
+              <img src="pics/product_pics/Milktea/coffee.jpg" style="width: 100%; height: 150px" alt="Coffee" />
+            </td>
+            <td>
+              <p>
+                Coffee is a brewed drink prepared from roasted coffee beans, the seeds of berries from certain Coffea species. The genus Coffea is native to tropical Africa and Madagascar, the Comoros, Mauritius, and Réunion in the Indian Ocean.
+              </p>
+            </td>
+            <td>
+              <select class="product-qty">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </td>
+            <td>
+              <button type="button" class="add-to-cart" data-product="coffee">Add to Cart</button>
+            </td>
+          </tr>
+          <tr>
+            <td>strawberry milkshake</td>
+            <td>
+              <p>$28</p>
+              <input type="hidden" class="product-price" value="28">
+            </td>
+            <td>
+              <img src="pics/product_pics/Milktea/strawberry_milkshake.jpg" style="width: 100%; height: 150px" alt="Strawberry Milkshake" />
+            </td>
+            <td>
+              <p>
+                A milkshake is a sweet, cold beverage that is usually made from milk, ice cream, or iced milk, and flavorings or sweeteners such as butterscotch, caramel sauce, chocolate syrup, or fruit syrup.
+              </p>
+            </td>
+            <td>
+              <select class="product-qty">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </td>
+            <td>
+              <button type="button" class="add-to-cart" data-product="strawberry milkshake">Add to Cart</button>
+            </td>
+          </tr>
+        </table>
+      </div>
 
-    <!-- Tab content -->
-    <div id="Milktea" class="tabcontent">
-      <h2>Milktea</h2>
-      <table border="2" style="width: 100%; text-align: left; border-collapse: collapse">
-        <tr>
-          <th>Product</th>
-          <th>Unit Price</th>
-          <th>Picture</th>
-          <th>Introduction</th>
-          <th>Number</th>
-        </tr>
-        <tr>
-          <td>bubble milktea</td>
-          <td>
-            <p>$48</p>
-            <button type="button">buy it</button>
-          </td>
-          <td>
-            <img src="/pics/product_pics/Milktea/Bubble_milktea.jpg" style="width: 100%; height: 50%" alt="" />
-          </td>
-          <td>
-            <p>
-              Bubble milk tea is a tea-based drink that originated in Taiwan in the early 1980s. It most commonly contains tea accompanied by chewy tapioca balls, also known as pearls or boba. It is a refreshing drink that can be served hot or cold.
-            </p>
-          </td>
-          <td>
-            <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>coffee</td>
-          <td>
-            <p>$38</p>
-            <button type="button">buy it</button>
-          </td>
-          <td>
-            <img src="/pics/product_pics/Milktea/coffee.jpg" style="width: 100%; height: 50%" alt="" />
-          </td>
-          <td>
-            <p>
-              Coffee is a brewed drink prepared from roasted coffee beans, the seeds of berries from certain Coffea species. The genus Coffea is native to tropical Africa and Madagascar, the Comoros, Mauritius, and Réunion in the Indian Ocean.
-            </p>
-          </td>
-          <td>
-            <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>strawberry milkshake</td>
-          <td>
-            <p>$28</p>
-            <button type="button">buy it</button>
-          </td>
-          <td>
-            <img src="/pics/product_pics/Milktea/strawberry_milkshake.jpg" style="width: 100%; height: 50%" alt="" />
-          </td>
-          <td>
-            <p>
-              A milkshake is a sweet, cold beverage that is usually made from milk, ice cream, or iced milk, and flavorings or sweeteners such as butterscotch, caramel sauce, chocolate syrup, or fruit syrup.
-            </p>
-          </td>
-          <td>
-            <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </td>
-        </tr>
-      </table>
-    </div>
+      <!-- 果汁产品 -->
+      <div id="Juice" class="tabcontent">
+        <h2>Juice</h2>
+        <table>
+          <tr>
+            <th>Product</th>
+            <th>Unit Price</th>
+            <th>Picture</th>
+            <th>Introduction</th>
+            <th>Quantity</th>
+            <th>Action</th>
+          </tr>
+          <tr>
+            <td>green juice</td>
+            <td>
+              <p>$18</p>
+              <input type="hidden" class="product-price" value="18">
+            </td>
+            <td>
+              <img src="pics/product_pics/juice/green_juice.jpg" style="width: 100%; height: 150px" alt="Green Juice" />
+            </td>
+            <td>
+              <p>
+                Green juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables, such as cucumber, green apple and so on.
+              </p>
+            </td>
+            <td>
+              <select class="product-qty">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </td>
+            <td>
+              <button type="button" class="add-to-cart" data-product="green juice">Add to Cart</button>
+            </td>
+          </tr>
+          <tr>
+            <td>orange juice</td>
+            <td>
+              <p>$24</p>
+              <input type="hidden" class="product-price" value="24">
+            </td>
+            <td>
+              <img src="pics/product_pics/juice/orange_juice.jpg" style="width: 100%; height: 150px" alt="Orange Juice" />
+            </td>
+            <td>
+              <p>
+                Orange juice is a liquid extract of the orange tree fruit, produced by squeezing or reaming oranges.
+              </p>
+            </td>
+            <td>
+              <select class="product-qty">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </td>
+            <td>
+              <button type="button" class="add-to-cart" data-product="orange juice">Add to Cart</button>
+            </td>
+          </tr>
+          <tr>
+            <td>red juice</td>
+            <td>
+              <p>$26</p>
+              <input type="hidden" class="product-price" value="26">
+            </td>
+            <td>
+              <img src="pics/product_pics/juice/red_juice.jpg" style="width: 100%; height: 150px" alt="Red Juice" />
+            </td>
+            <td>
+              <p>
+                Red juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables, such as strawberry, cherry and so on.
+              </p>
+            </td>
+            <td>
+              <select class="product-qty">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </td>
+            <td>
+              <button type="button" class="add-to-cart" data-product="red juice">Add to Cart</button>
+            </td>
+          </tr>
+        </table>
+      </div>
 
-    <div id="Juice" class="tabcontent">
-      <h2>Juice</h2>
-      <table border="2" style="width: 100%; text-align: left; border-collapse: collapse">
-        <tr>
-          <th>Product</th>
-          <th>Unit Price</th>
-          <th>Picture</th>
-          <th>Introduction</th>
-          <th>Number</th>
-        </tr>
-        <tr>
-          <td>green juice</td>
-          <td>
-            <p>$18</p>
-            <button type="button">buy it</button>
-          </td>
-          <td>
-            <img src="/pics/product_pics/juice/green_juice.jpg" style="width: 100%; height: 80%" alt="" />
-          </td>
-          <td>
-            <p>
-              Green juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables, such as cucumber, green apple and so on.
-            </p>
-          </td>
-          <td>
-            <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>orange juice</td>
-          <td>
-            <p>$24</p>
-            <button type="button">buy it</button>
-          </td>
-          <td>
-            <img src="/pics/product_pics/juice/orange_juice.jpg" style="width: 100%; height: 80%" alt="" />
-          </td>
-          <td>
-            <p>
-              Orange juice is a liquid extract of the orange tree fruit, produced by squeezing or reaming oranges.
-            </p>
-          </td>
-          <td>
-            <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>red juice</td>
-          <td>
-            <p>$26</p>
-            <button type="button">buy it</button>
-          </td>
-          <td>
-            <img src="/pics/product_pics/juice/red_juice.jpg" style="width: 100%; height: 80%" alt="" />
-          </td>
-          <td>
-            <p>
-              Red juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables, such as strawberry, cherry and so on.
-            </p>
-          </td>
-          <td>
-            <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </td>
-        </tr>
-      </table>
-    </div>
+      <!-- 酒精饮料产品 -->
+      <div id="Alcoholic" class="tabcontent">
+        <h2>Alcoholic Beverage</h2>
+        <table>
+          <tr>
+            <th>Product</th>
+            <th>Unit Price</th>
+            <th>Picture</th>
+            <th>Introduction</th>
+            <th>Quantity</th>
+            <th>Action</th>
+          </tr>
+          <tr>
+            <td>Cool</td>
+            <td>
+              <p>$58</p>
+              <input type="hidden" class="product-price" value="58">
+            </td>
+            <td>
+              <img src="pics/product_pics/Alcoholic/Cool_Cocktail.jpg" style="width: 100%; height: 150px" alt="Cool Cocktail" />
+            </td>
+            <td>
+              <p>
+                "Cool" is a cocktail made with gin, lemon juice, and sugar, and topped with soda water. It is a classic cocktail that is easy to make.
+              </p>
+            </td>
+            <td>
+              <select class="product-qty">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </td>
+            <td>
+              <button type="button" class="add-to-cart" data-product="Cool">Add to Cart</button>
+            </td>
+          </tr>
+          <tr>
+            <td>lemon cocktail</td>
+            <td>
+              <p>$38</p>
+              <input type="hidden" class="product-price" value="38">
+            </td>
+            <td>
+              <img src="pics/product_pics/Alcoholic/lemon_Cocktail.jpg" style="width: 100%; height: 150px" alt="Lemon Cocktail" />
+            </td>
+            <td>
+              <p>
+                Lemon cocktail is a cocktail made with lemon juice, gin, and sugar, and topped with soda water. It is a refreshing drink that is perfect for a hot summer day.
+              </p>
+            </td>
+            <td>
+              <select class="product-qty">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </td>
+            <td>
+              <button type="button" class="add-to-cart" data-product="lemon cocktail">Add to Cart</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Blood</td>
+            <td>
+              <p>$68</p>
+              <input type="hidden" class="product-price" value="68">
+            </td>
+            <td>
+              <img src="pics/product_pics/Alcoholic/blood.jpg" style="width: 100%; height: 150px" alt="Blood Cocktail" />
+            </td>
+            <td>
+              <p>
+                "Blood" is a cocktail made with vodka, tomato juice, and spices. It is a classic cocktail that is perfect for brunch or a night out.
+              </p>
+            </td>
+            <td>
+              <select class="product-qty">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </td>
+            <td>
+              <button type="button" class="add-to-cart" data-product="Blood">Add to Cart</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      
+      <!-- 购物车摘要 -->
+      <div id="cart-summary">
+        <h3>Your Cart Summary</h3>
+        <div id="cart-items"></div>
+        <p id="cart-total">Total: $0.00</p>
+      </div>
 
-    <div id="Alcoholic" class="tabcontent">
-      <h2>Alcoholic Beverage</h2>
-      <table border="2" style="width: 100%; text-align: left; border-collapse: collapse">
-        <tr>
-          <th>Product</th>
-          <th>Unit Price</th>
-          <th>Picture</th>
-          <th>Introduction</th>
-          <th>Number</th>
-        </tr>
-        <tr>
-          <td>Cool</td>
-          <td>
-            <p>$58</p>
-            <button type="button">buy it</button>
-          </td>
-          <td>
-            <img src="/pics/product_pics/Alcoholic/Cool_Cocktail.jpg" style="width: 100%; height: 80%" alt="" />
-          </td>
-          <td>
-            <p>
-              "Cool" is a cocktail made with gin, lemon juice, and sugar, and topped with soda water. It is a classic cocktail that is easy to make.
-            </p>
-          </td>
-          <td>
-            <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>lemon cocktail</td>
-          <td>
-            <p>$38</p>
-            <button type="button">buy it</button>
-          </td>
-          <td>
-            <img src="/pics/product_pics/Alcoholic/lemon_Cocktail.jpg" style="width: 100%; height: 80%" alt="" />
-          </td>
-          <td>
-            <p>
-              Lemon cocktail is a cocktail made with lemon juice, gin, and sugar, and topped with soda water. It is a refreshing drink that is perfect for a hot summer day.
-            </p>
-          </td>
-          <td>
-            <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>Blood</td>
-          <td>
-            <p>$68</p>
-            <button type="button">buy it</button>
-          </td>
-          <td>
-            <img src="/pics/product_pics/Alcoholic/blood.jpg" style="width: 100%; height: 80%" alt="" />
-          </td>
-          <td>
-            <p>
-              "Blood" is a cocktail made with vodka, tomato juice, and spices. It is a classic cocktail that is perfect for brunch or a night out.
-            </p>
-          </td>
-          <td>
-            <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </td>
-        </tr>
-      </table>
-    </div>
-    </section> 
+      <!-- 结账表单 -->
+      <div style="text-align: center; margin: 30px 0;">
+        <form name="f_checkout" id="f_checkout" method="post" action="http://localhost:8080/check_out" onsubmit="return process_check_out(this)">
+          <input type="hidden" name="f_check_out_username" id="f_check_out_username" value="">
+          <input type="hidden" name="cart_data" id="cart_data" value="">
+          <input type="submit" value="Check out with PayPal" class="paypal-button">
+        </form>
+      </div>
+    </section>
 
     <footer>
-      <p>Designed by icy.</p>
+      <p style="font-style: italic;color: rgb(115, 173, 224);">Designed by icy.</p>
+      <p style="font-style: italic;color: rgb(23, 10, 94);">Additional designed by linka with little miaomiao tools.</p>
     </footer>
-    <script src="js/main.js"></script>
+
+    <script>
+      // 购物车功能
+      let cart = [];
+      const customerSelect = document.getElementById('customerSelect');
+      
+      // 更新购物车显示
+      function updateCartDisplay() {
+        const customer = customerSelect.value;
+        const customerCart = cart.filter(item => item.customer === customer);
+        const cartItemsDiv = document.getElementById('cart-items');
+        const cartTotalP = document.getElementById('cart-total');
+        const cartSummary = document.getElementById('cart-summary');
+        
+        if (customerCart.length === 0) {
+          cartSummary.style.display = 'none';
+          return;
+        }
+        
+        cartSummary.style.display = 'block';
+        cartItemsDiv.innerHTML = '';
+        
+        let total = 0;
+        customerCart.forEach(item => {
+          const itemTotal = item.price * item.quantity;
+          total += itemTotal;
+          
+          const itemDiv = document.createElement('div');
+          itemDiv.innerHTML = `
+            <p>${item.product} - $${item.price.toFixed(2)} x ${item.quantity} = $${itemTotal.toFixed(2)}</p>
+          `;
+          cartItemsDiv.appendChild(itemDiv);
+        });
+        
+        cartTotalP.textContent = `Total: $${total.toFixed(2)}`;
+      }
+      
+      // 添加到购物车按钮事件监听
+      document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', function() {
+          const productName = this.getAttribute('data-product');
+          const row = this.closest('tr');
+          const price = parseFloat(row.querySelector('.product-price').value);
+          const quantity = parseInt(row.querySelector('.product-qty').value);
+          const customer = customerSelect.value;
+
+          if (!customer) {
+            alert('Please select a customer first');
+            customerSelect.focus();
+            return;
+          }
+
+          if (quantity <= 0) {
+            alert('Please select a quantity greater than 0');
+            return;
+          }
+
+          // 映射产品名称到 prod_id
+          const productIdMap = {
+            'bubble milktea': 1,
+            'coffee': 2,
+            'strawberry milkshake': 3,
+            'green juice': 4,
+            'orange juice': 5,
+            'red juice': 6,
+            'Cool': 7,
+            'lemon cocktail': 8,
+            'Blood': 9
+          };
+          const prod_id = productIdMap[productName];
+
+          if (!prod_id) {
+            alert('Product ID not found for ' + productName);
+            return;
+          }
+
+          // 发送请求到 /cart 路由
+          fetch('/cart', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              prod_id: prod_id,
+              qty: quantity,
+              price: price,
+              f_username: customer
+            })
+          })
+          .then(response => response.text())
+          .then(data => {
+            alert(`${quantity} ${productName}(s) added to cart for ${customer}`);
+            // 更新前端购物车显示
+            const existingItemIndex = cart.findIndex(item => 
+              item.product === productName && item.customer === customer
+            );
+            if (existingItemIndex !== -1) {
+              cart[existingItemIndex].quantity += quantity;
+            } else {
+              cart.push({
+                product: productName,
+                price: price,
+                quantity: quantity,
+                customer: customer
+              });
+            }
+            updateCartDisplay();
+            console.log('Current cart:', cart);
+          })
+          .catch(error => {
+            console.error('Error adding to cart:', error);
+            alert('Failed to add to cart');
+          });
+        });
+      });
+      
+      // 客户选择变化时更新购物车显示
+      customerSelect.addEventListener('change', updateCartDisplay);
+      
+      // 结账处理函数
+      function process_check_out(fm) {
+        const customer = customerSelect.value;
+        if (!customer) {
+          alert("Please select a customer");
+          customerSelect.focus();
+          return false;
+        }
+        
+        // 过滤出当前客户的购物车项目
+        const customerCart = cart.filter(item => item.customer === customer);
+        
+        if (customerCart.length === 0) {
+          alert("No items in cart for selected customer");
+          return false;
+        }
+        
+        // 准备要发送的数据
+        const cartData = customerCart.map(item => ({
+          product: item.product,
+          price: item.price,
+          quantity: item.quantity
+        }));
+        
+        // 计算总价
+        const total = customerCart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        
+        console.log('Submitting cart data:', {
+          username: customer,
+          items: cartData,
+          total: total
+        });
+        
+        // 设置表单数据
+        document.getElementById('f_check_out_username').value = customer;
+        document.getElementById('cart_data').value = JSON.stringify(cartData);
+        
+        return true;
+      }
+      
+      // 标签页功能
+      function openCategory(evt, categoryName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(categoryName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+      
+      // 默认显示第一个标签页
+      document.getElementById("Milktea").style.display = "block";
+      document.getElementsByClassName("tablinks")[0].className += " active";
+      
+      // 轮播图功能
+      let slideIndex = 0;
+      showSlides();
+      
+      function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";  
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}    
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+        setTimeout(showSlides, 2000); // 每2秒切换一次
+      }
+    </script>
   </body>
 </html>
