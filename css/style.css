@@ -50,7 +50,14 @@ body {
   border: 1px solid #ccc;
   background-color: rgba(195, 180, 170, 0.6);
 }
-
+.tab .tablinks {
+  background-color: rgba(206, 137, 95, 0.5);
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
 .tab button {
   background-color: rgba(207, 96, 21, 0.6);
   color: white;
